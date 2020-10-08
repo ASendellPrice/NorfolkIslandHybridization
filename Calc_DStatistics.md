@@ -36,9 +36,8 @@ P1	        P2	      P3	      Dstatistic    p-value	      f_G
 NNZ_Zlat	  NI_Zlat	  NI_Zten	  0.0397274	    5.66069e-12	  0.0181002
 
 
-################################################################################
-STEP 2: Determining how patterns of introgression vary across the genome
-################################################################################
+
+## STEP 2: Determining how patterns of introgression vary across the genome
 
 So far we have determined that at the genome level there is significant levels of introgression between Z.tenuirostris and Z.lateralis on Norfolk Island, the next step will be to calculate D-stats in sliding windows so that we can assess how patterns of introgression vary across the genome.
 
