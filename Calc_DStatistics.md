@@ -1,4 +1,4 @@
-# Performing various ABBA-BABA tests to the infer extent of introgression between **Zosterops tenuirostris** and **Zosterops lateralis** on Norfolk Island.
+# Performing various ABBA-BABA tests to the infer extent of introgression between *Zosterops tenuirostris* and *Zosterops lateralis* on Norfolk Island.
 A. Sendell-Price, Oct 2020.
 
 ################################################################################
