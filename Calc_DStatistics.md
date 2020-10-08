@@ -34,8 +34,8 @@ cat Pops__Dmin.txt
 ```
 
 ```
-P1	        P2	      P3	      Dstatistic    p-value	      f_G
-NNZ_Zlat	  NI_Zlat	  NI_Zten	  0.0397274	    5.66069e-12	  0.0181002
+P1  P2  P3  Dstatistic  p-value f_G
+NNZ_Zlat  NI_Zlat NI_Zten 0.0397274 5.66069e-12 0.0181002
 ```
 
 
