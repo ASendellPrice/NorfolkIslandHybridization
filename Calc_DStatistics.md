@@ -1,16 +1,23 @@
-# Performing various ABBA-BABA tests to the infer extent of introgression between *Zosterops tenuirostris* and *Zosterops lateralis* on Norfolk Island.
+# Performing various ABBA-BABA tests to the infer the extent of introgression between *Zosterops tenuirostris* and *Zosterops lateralis* on Norfolk Island.
 A. Sendell-Price, Oct 2020.
 
 ## STEP 1: Calculate genome-wide estimate of introgression using DSuite
 In our first assessment of hybridization across the genome we will calculate a single D-statistic for the genome. This will give us an idea of the overall extent of introgression between the two species. For this we will use the program [DSuite](https://github.com/millanek/Dsuite) which allows for the fast calculation of the D-statistic from SNP data in VCF format.
 
-First, set path to DSuite and VCF file
+First, set path to DSuite and specify the VCF file
 ```
 DSUITE=~/Dropbox/DPhil/BIN/Dsuite/Build/Dsuite
 VCF=../VCFs/ZFified_Norfolk_Hybridization_indv73_pos7019400.vcf.gz
 ```
+To run the analysis we will need to create a tab delimited file ("Pops.txt") that assigns samples to populations. That file looks like this, where "Outgroup" is used to assigns individuals to the outgroup Z.borbonicus and remaining samples are asigned to a population:
 
-For analyses we will need to create a tab delimited file ("Pops.txt") that assigns samples to populations. That file looks like this, where "Outgroup" is used to assigns individuals to the outgroup Z.borbonicus:
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
+
 
 ```
 head -n 3 Pops.txt
