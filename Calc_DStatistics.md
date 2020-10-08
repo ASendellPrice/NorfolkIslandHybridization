@@ -27,7 +27,7 @@ Calculate the D-statistic (ABBA/BABA) and f4-ratio (f_G) statistics for all trio
 $DSUITE Dtrios $VCF Pops.txt
 ```
 
-This will take a little while to run, following which DStuite will write several files. The file we are interested in is "Pops__Dmin.txt", which contains the lowest estimate of D and a p-value estimated via DSuite's jacknifing procedure. The absence of introgression can be rejected if the p-value (5.66069e-12) is well below the significance level. In our case significant genome-wide levels of divergence (D=0.0397274) HAVE been detected. As this value is positive, we can infer that introgression from *Z.tenuirostris* into *Z.lateralis* has taken place.
+This will take a little while to run, following which DStuite will write several files. The file we are interested in is "Pops__Dmin.txt", which contains the lowest estimate of D and a p-value estimated via DSuite's jacknifing procedure. The absence of introgression can be rejected if the p-value (**5.66069e-12**) is well below the significance level. In our case significant genome-wide levels of divergence (**D=0.0397274**) HAVE been detected. As this value is positive, we can infer that introgression from *Z.tenuirostris* into *Z.lateralis* has taken place.
 
 ```
 cat Pops__Dmin.txt
