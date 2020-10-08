@@ -1,9 +1,8 @@
 # Performing various ABBA-BABA tests to the infer extent of introgression between *Zosterops tenuirostris* and *Zosterops lateralis* on Norfolk Island.
 A. Sendell-Price, Oct 2020.
 
-################################################################################
-STEP 1: Calculate genome-wide estimate of introgression using DSuite
-################################################################################
+##STEP 1: Calculate genome-wide estimate of introgression using DSuite
+
 
 Set path to DSuite and VCF
 ```
