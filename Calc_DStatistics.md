@@ -2,9 +2,9 @@
 A. Sendell-Price, Oct 2020.
 
 ## STEP 1: Calculate genome-wide estimate of introgression using DSuite
+In our first assessment of hybridization across the genome we will calculate a single D-statistic for the genome. This will give us an idea of the overall extent of introgression between the two species. For this we will use the program [DSuite](https://github.com/millanek/Dsuite) which allows for the fast calculation of the D-statistic from SNP data in VCF format.
 
-
-Set path to DSuite and VCF
+First, set path to DSuite and VCF file
 ```
 DSUITE=~/Dropbox/DPhil/BIN/Dsuite/Build/Dsuite
 VCF=../VCFs/ZFified_Norfolk_Hybridization_indv73_pos7019400.vcf.gz
