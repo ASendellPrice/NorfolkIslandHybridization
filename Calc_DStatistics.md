@@ -9,15 +9,16 @@ First, set path to DSuite and specify the VCF file
 DSUITE=~/Dropbox/DPhil/BIN/Dsuite/Build/Dsuite
 VCF=../VCFs/ZFified_Norfolk_Hybridization_indv73_pos7019400.vcf.gz
 ```
-To run the analysis we will need to create a tab delimited file ("Pops.txt") that assigns samples to populations. That file looks like this, where "Outgroup" is used to assigns individuals to the outgroup *Z.borbonicus* and remaining samples are assigned to a population (Note: Only first four lines shown):
+To run the analysis we will need to create a tab delimited file ("Pops.txt") that assigns samples to populations. That file looks like this, where "Outgroup" is used to assigns individuals to the outgroup *Z.borbonicus* and remaining samples are assigned to a population:
 
 ```
 head -n 3 Pops.txt
-#15-179	Outgroup
-#PN1	NNZ_Zlat
-#PN10	NNZ_Zlat
-#PN11	NNZ_Zlat
-#....
+```
+```
+15-179	Outgroup
+PN1	NNZ_Zlat
+PN10	NNZ_Zlat
+PN11	NNZ_Zlat
 ```
 
 Note: We are also including TAS, SNZ and CI in this analysis for comparison. As we don't expect there to be introgression from Z. tenuirostris into these populations, we will be able to check the performance of Dsuite. If our assumptions are correct we should detect no significant levels of introgression in these pops.
