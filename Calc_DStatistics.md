@@ -102,20 +102,19 @@ python $ABBABABAwindows \
 --minData 0.5 --popsFile Pops.txt
 ```
 
-################################################################################
-STEP 3: Calculate DFS
-################################################################################
-
+## STEP 3: Calculate DFS
 By calculating genome-wide and windowed D-statistics we now know the extent to which the Z.tenuirostris and Z.lateralis genomes are introgressed and how patterns of introgression vary across the genome. However, the D-statistic itself is not overly informative of the timing or direction of this introgression. So, now we will calculate D frequency spectrum (DFS) - an extension of the D-statistic in which D is partitioned according to the frequencies of derived allles. The DFS is strongly altered by different ages and directions of introgression and is also sensitive to demographic events such as population bottlenecks (all explained by Simon Martin here: https://doi.org/10.1093/molbev/msaa239).
 
 This is a three step process. First run freq.py to compute allele frequencies at each site in each population:
 
 Set path to freq.py:
+
 ```
 FREQ=~/Dropbox/DPhil/BIN/genomics_general/freq.py
 ```
 
 Compute allele frequencies:
+
 ```
 python $FREQ \
 -g $GENO \
@@ -125,7 +124,8 @@ python $FREQ \
 
 Next run sfs.py, which produces Site Frequency Spectra. By including the --outgroup flag, we are telling it to use the outgroup population to polarise allele frequencies for the ingroups. We then tell it to output just one 3D SFS, representing populations P1 (NNZ Zlat), P2 (NI Zlat) and P3 (NI Zten).
 
-Activate python3 environment:
+But first, activate python3 environment required by sfs.py:
+
 ```
 conda activate py3
 ```
