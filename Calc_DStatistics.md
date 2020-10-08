@@ -19,11 +19,7 @@ head -n 3 Pops.txt
 PN1	NNZ_Zlat
 PN10	NNZ_Zlat
 PN11	NNZ_Zlat
-...   ...
-Samp Pop_species
 ```
-
-Note: We are also including TAS, SNZ and CI in this analysis for comparison. As we don't expect there to be introgression from Z. tenuirostris into these populations, we will be able to check the performance of Dsuite. If our assumptions are correct we should detect no significant levels of introgression in these pops.
 
 Calculate the D-statistic (ABBA/BABA) and f4-ratio (f_G) statistics for all trios of species/pops in the dataset (the outgroup being fixed). The results are as definded in Patterson et al. 2012 (equivalent to Durand et al. 2011 when the Outgroup is fixed for the ancestral allele). Run Dsuite using Dtrios to calculate a single genome-wide estimate of Patterson’s D, aka the ABBA-BABA statistic:
 
@@ -33,10 +29,14 @@ $DSUITE Dtrios $VCF Pops.txt
 
 This will take a little while to run, following which DStuite will write several files. The file we are interested in is "Pops__Dmin.txt", which contains the lowest estimate of D and a p-value estimated via DSuite's jacknifing procedure. The absence of introgression can be rejected if the p-value is below the significance level. In our case significant genome-wide levels of divergence HAVE been detected. As this value is positive, we can infer that introgression from *Z.tenuirostris* into *Z.lateralis* has taken place.
 
-Relevant line here:
+```
+cat Pops__Dmin.txt
+```
+
+```
 P1	        P2	      P3	      Dstatistic    p-value	      f_G
 NNZ_Zlat	  NI_Zlat	  NI_Zten	  0.0397274	    5.66069e-12	  0.0181002
-
+```
 
 
 ## STEP 2: Determining how patterns of introgression vary across the genome
