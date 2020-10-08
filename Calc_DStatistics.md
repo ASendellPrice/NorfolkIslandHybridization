@@ -102,7 +102,7 @@ python $ABBABABAwindows \
 --minData 0.5 --popsFile Pops.txt
 ```
 
-## STEP 3: Calculate DFS
+## STEP 3: Calculate DFS from SFS
 By calculating genome-wide and windowed D-statistics we now know the extent to which the Z.tenuirostris and Z.lateralis genomes are introgressed and how patterns of introgression vary across the genome. However, the D-statistic itself is not overly informative of the timing or direction of this introgression. So, now we will calculate D frequency spectrum (DFS) - an extension of the D-statistic in which D is partitioned according to the frequencies of derived allles. The DFS is strongly altered by different ages and directions of introgression and is also sensitive to demographic events such as population bottlenecks (all explained by Simon Martin here: https://doi.org/10.1093/molbev/msaa239).
 
 This is a three step process. First run freq.py to compute allele frequencies at each site in each population:
@@ -131,7 +131,9 @@ conda activate py3
 ```
 
 Set path to sfs.py:
+```
 SFS=../genomics_general-0.4/sfs.py
+```
 
 Compute SFS, subsample the data down to 22 haplotypes for P1 and P2 and 14 for P3. Note: subsampling is in haploid.
 
@@ -152,30 +154,10 @@ Finally, plot DFS using R Script plot_DFS_from_SFS.R, Which looks like this:
 dfs_data <- get.DFS(base_counts=FS[,-4], #base counts are the first three columns (i.e everything minus column 4)
                     site_counts=FS[,4], # site counts are column
                     Ns = c(22,22,14)) #Ns provide the haploid sample sizes of each population (1 and 2 must always be equal)
-```
-
-### plot
 
 pdf("NorfolkIsHybrid.NNZ_Zlat_NI_Zlat_NI_Zten.subsample22_22_14.pdf")
 par(mar=c(1,4,1,1))
 plotDFS(dfs_data$DFS, dfs_data$weights, method="lines", col_D="red", no_xlab=F)
 dev.off()
 
-### code for exporting a table of plotted values
-write.table(data.frame(D=round(dfs_data$DFS,4),
-                        weight=round(dfs_data$weights,4)),
-             file="NorfolkIsHybrid.NNZ_Zlat_NI_Zlat_NI_Zten.subsample22_22_14.csv",
-             sep=",",row.names=FALSE,quote=FALSE)
-
-
-
-
-#STEP 3: Calculate windowed divergence/diversity stats
-python ../genomics_general-0.4/popgenWindows.py \
--g ../VCFs/ZFified_Norfolk_Hybridization_indv73_pos7019400.geno.gz \
--f phased \
--w 10000 \
--m 100 \
--o Fst_dxy_pi_10kb.csv \
--p NNZ_Zlat -p NI_Zlat -p NI_Zten -p Zbor \
---popsFile Pops.txt
+```
