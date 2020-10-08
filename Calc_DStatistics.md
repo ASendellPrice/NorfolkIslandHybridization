@@ -148,9 +148,13 @@ python $SFS \
 --suff .subsample22_22_14.sfs
 ```
 
-Finally, plot DFS using R Script plot_DFS_from_SFS.R, Which looks like this:
+Finally, plot DFS using R. Note these lines of code require Simon Martin's DFS R functions available [here](https://github.com/simonhmartin/dfs).
 
 ```{r}
+source("DFS.R")
+
+FS <- read.table("NorfolkIsHybrid.NNZ_Zlat_NI_Zlat_NI_Zten.subsample22_22_14.sfs")
+
 dfs_data <- get.DFS(base_counts=FS[,-4], #base counts are the first three columns (i.e everything minus column 4)
                     site_counts=FS[,4], # site counts are column
                     Ns = c(22,22,14)) #Ns provide the haploid sample sizes of each population (1 and 2 must always be equal)
