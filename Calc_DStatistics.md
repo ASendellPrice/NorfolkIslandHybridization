@@ -39,9 +39,9 @@ NNZ_Zlat	  NI_Zlat	  NI_Zten	  0.0397274	    5.66069e-12	  0.0181002
 
 ## STEP 2: Determining how patterns of introgression vary across the genome
 
-So far we have determined that at the genome level there is significant levels of introgression between Z.tenuirostris and Z.lateralis on Norfolk Island, the next step will be to calculate D-stats in sliding windows so that we can assess how patterns of introgression vary across the genome.
+So far we have determined that at the genome level there is significant levels of introgression between *Z.tenuirostris* and *Z.lateralis* on Norfolk Island, the next step will be to calculate the D-statistic in non-overlapping windows so that we can assess how patterns of introgression vary across the genome.
 
-This could be conducted using DSuite's "Dinvestigate" command, however I think this method has a servere limitation in that "Dinvestigate" uses the number of SNPs rather than SNP coordinates when determining window ranges. As a result windowed D-statistics calcualted with DSuite are calculated for windows of varying size - which is not ideal.
+This could be conducted using DSuite's "Dinvestigate" command, however I think this method has a severe limitation in that "Dinvestigate" uses the number of SNPs rather than SNP coordinates when determining window ranges. As a result windowed D-statistics calculated with DSuite are calculated for windows of varying size - which is not ideal.
 
 So, instead we will make use of Simon H. Martin's "genomics_general" script-set which includes several useful python scripts for running windowed ABBA-BABA tests. See: https://github.com/simonhmartin/genomics_general.
 
