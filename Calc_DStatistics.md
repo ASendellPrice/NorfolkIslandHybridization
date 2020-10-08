@@ -11,7 +11,7 @@ VCF=../VCFs/ZFified_Norfolk_Hybridization_indv73_pos7019400.vcf.gz
 ```
 To run the analysis we will need to create a tab delimited file ("Pops.txt") that assigns samples to populations. That file looks like this, where "Outgroup" is used to assigns individuals to the outgroup Z.borbonicus and remaining samples are asigned to a population:
 
-| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
 | col 3 is      | right-aligned | $1600 |
 | col 2 is      | centered      |   $12 |
 | zebra stripes | are neat      |    $1 |
