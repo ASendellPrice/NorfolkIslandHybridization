@@ -135,7 +135,7 @@ Set path to sfs.py:
 SFS=../genomics_general-0.4/sfs.py
 ```
 
-Compute SFS, subsample the data down to 24 haplotypes for P1 and P2 and 14 for P3. Note: subsampling is in haploid.
+Compute SFS, subsample the data down to 10 haplotypes for P1 and P2 and 2 for P3. Note: subsampling is in haploid.
 Note: P1 and P2 must be scaled to the same number of haplotypes.
 ```
 python3 $SFS \
@@ -143,9 +143,9 @@ python3 $SFS \
 --inputType baseCounts \
 --outgroup Outgroup \
 --FSpops NNZ_Zlat NI_Zlat NI_Zten \
---subsample 24 24 14 \
+--subsample 10 10 2 \
 --pref NorfolkIsHybrid. \
---suff .subsample24_24_14.sfs
+--suff .subsample10_10_2.sfs
 ```
 
 Finally, plot DFS using R. Note these lines of code require Simon Martin's DFS R functions available [here](https://github.com/simonhmartin/dfs).
@@ -153,13 +153,13 @@ Finally, plot DFS using R. Note these lines of code require Simon Martin's DFS R
 ```{r}
 source("DFS.R")
 
-FS <- read.table("NorfolkIsHybrid.NNZ_Zlat_NI_Zlat_NI_Zten.subsample24_24_14.sfs")
+FS <- read.table("NorfolkIsHybrid.NNZ_Zlat_NI_Zlat_NI_Zten.subsample10_10_2.sfs")
 
 dfs_data <- get.DFS(base_counts=FS[,-4], #base counts are the first three columns (i.e everything minus column 4)
                     site_counts=FS[,4], # site counts are column
-                    Ns = c(24,24,14)) #Ns provide the haploid sample sizes of each population (1 and 2 must always be equal)
+                    Ns = c(10,10,2)) #Ns provide the haploid sample sizes of each population (1 and 2 must always be equal)
 
-pdf("NorfolkIsHybrid.NNZ_Zlat_NI_Zlat_NI_Zten.subsample24_24_14.pdf")
+pdf("NorfolkIsHybrid.NNZ_Zlat_NI_Zlat_NI_Zten.subsample10_10_2.pdf")
 par(mar=c(1,4,1,1))
 plotDFS(dfs_data$DFS, dfs_data$weights, method="lines", col_D="red", no_xlab=F)
 dev.off()
