@@ -63,8 +63,8 @@ Use parseVCF.py to convert VCF file into ".geno" format (format required for dow
 
 Set path to parseVCF.py and output file:
 ```
-parseVCF=~/Dropbox/DPhil/BIN/genomics_general/VCF_processing/parseVCF.py
-GENO=../VCFs/ZFified_Norfolk_Hybridization_indv73_pos7019400.geno.gz
+parseVCF=~/Dropbox/DPhil/Norfolk_Hybridization/VCF/ZFified_NorfolkHybridization_Zlatv1_Biallelic_NoIndels_MinQC20_MinDP4_MaxMiss0.5.vcf.gz
+GENO=ZFified_NorfolkHybridization_Zlatv1_Biallelic_NoIndels_MinQC20_MinDP4_MaxMiss0.5.geno.gz
 ```
 
 Convert vcf file:
@@ -116,7 +116,7 @@ FREQ=~/Dropbox/DPhil/BIN/genomics_general/freq.py
 Compute allele frequencies:
 
 ```
-python $FREQ \
+python2 $FREQ \
 -g $GENO \
 -p $P1 -p $P2 -p $P3 -p Outgroup \
 --popsFile Pops.txt | gzip > basecounts.tsv.gz
@@ -138,14 +138,14 @@ SFS=../genomics_general-0.4/sfs.py
 Compute SFS, subsample the data down to 22 haplotypes for P1 and P2 and 14 for P3. Note: subsampling is in haploid.
 
 ```
-python $SFS \
+python3 $SFS \
 -i basecounts.tsv.gz \
 --inputType baseCounts \
 --outgroup Outgroup \
 --FSpops NNZ_Zlat NI_Zlat NI_Zten \
---subsample 22 22 14 \
+--subsample 24 30 14 \
 --pref NorfolkIsHybrid. \
---suff .subsample22_22_14.sfs
+--suff .subsample24_30_14.sfs
 ```
 
 Finally, plot DFS using R. Note these lines of code require Simon Martin's DFS R functions available [here](https://github.com/simonhmartin/dfs).
