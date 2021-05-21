@@ -84,6 +84,7 @@ First set path to python script, and define necessary variables:
 ```
 ABBABABAwindows=~/Dropbox/DPhil/BIN/genomics_general/ABBABABAwindows.py
 WINDOW_SIZE=100000
+STEP_SIZE=10000
 MIN_SNPs=100  # <- Previous studies suggest 100 SNPs is the absolute minumum
 P1=NNZ_Zlat
 P2=NI_Zlat
@@ -97,6 +98,7 @@ python $ABBABABAwindows \
 -f phased \
 -o D-stats_windowsize${WINDOW_SIZE}_min${MIN_SNPs}.csv \
 -w $WINDOW_SIZE \
+-s $STEP_SIZE \
 -m $MIN_SNPs \
 -P1 $P1 -P2 $P2 -P3 $P3 -O Outgroup \
 --minData 0.5 --popsFile Pops.txt
