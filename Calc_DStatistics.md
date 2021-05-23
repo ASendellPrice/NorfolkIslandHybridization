@@ -167,3 +167,16 @@ plotDFS(dfs_data$DFS, dfs_data$weights, method="lines", col_D="red", no_xlab=F)
 dev.off()
 
 ```
+
+Calculate windowed divergence stats
+```
+python  ../genomics_general/popgenWindows.py \
+-g $GENO \
+-f phased -o Pairwise_Stats_100kb.csv \
+-w $WINDOW_SIZE \
+-s $STEP_SIZE \
+-m $MIN_SNPs \
+-p NI.Zlat N101,N102,N103,N104,N108,N110,N111,N114,N121,N122,N123,N126,N128,N129,N130 \
+-p NI.Zten NOR124,NOR125,NOR132,NOR134,NOR140,NOR141,NOR142	\
+-p NNZ.Zlat PN10,PN1,PN12,PN13,PN15,PN16,PN17,PN1,PN2,PN3,PN6,PN7
+```
