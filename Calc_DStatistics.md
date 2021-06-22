@@ -170,6 +170,8 @@ dev.off()
 
 Calculate windowed divergence stats
 ```
+cd Calculate_DivergenceDiversity_Stats 
+GENO=../ABBA-BABA/ZFified_NorfolkHybridization_Zlatv1_Biallelic_NoIndels_MinQC20_MinDP4_MaxMiss0.5.geno.gz
 python  ../genomics_general/popgenWindows.py \
 -g $GENO \
 -f phased -o Pairwise_Stats_100kb.csv \
