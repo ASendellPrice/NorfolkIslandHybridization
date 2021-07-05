@@ -74,10 +74,10 @@ python $parseVCF -i $VCF --skipIndels | bgzip > $GENO
 
 The outputted file will be formatted like this:
 CHROM	POS	    15-179	N101	N102	N103
-1      107144	C/C	    C/C   N/N	  C/C
-1	    107145	G/G	    G/G	  N/N   G/G
+1      107144	C|C	    C|C   N/N	  C/C
+1	    107145	G|G	    G|G	  N/N   G/G
 
-Missing data is denoted as N, and phased and unphased genotypes are shown conventionally with | and /. For our data all sites are unphased.
+Missing data is denoted as N, and phased and unphased genotypes are shown conventionally with | and /. For our data all sites are phased.
 
 Calculate D-statistic using ABBABABAwindows.py
 First set path to python script, and define necessary variables:
@@ -93,15 +93,15 @@ P3=NI_Zten
 
 Run ABBABABAwindows.py
 ```
-python $ABBABABAwindows \
+python2 $ABBABABAwindows \
 -g $GENO \
 -f phased \
--o D-stats_windowsize${WINDOW_SIZE}_min${MIN_SNPs}.csv \
+-o D-stats_windowsize${WINDOW_SIZE}_stepsize_${STEP_SIZE}_min${MIN_SNPs}.csv \
 -w $WINDOW_SIZE \
 -s $STEP_SIZE \
 -m $MIN_SNPs \
 -P1 $P1 -P2 $P2 -P3 $P3 -O Outgroup \
---minData 0.5 --popsFile Pops.txt
+--minData 0.5 --popsFile ../VCF/Pops.txt
 ```
 
 ## STEP 3: Calculate DFS from SFS
@@ -171,14 +171,14 @@ dev.off()
 Calculate windowed divergence stats
 ```
 cd Calculate_DivergenceDiversity_Stats 
-GENO=../ABBA-BABA/ZFified_NorfolkHybridization_Zlatv1_Biallelic_NoIndels_MinQC20_MinDP4_MaxMiss0.5.geno.gz
-python  ../genomics_general/popgenWindows.py \
+POPGENWINDOWS=../../genomics_general-0.4/popgenWindows.py
+
+python2 $POPGENWINDOWS \
 -g $GENO \
--f phased -o Pairwise_Stats_windowsize${WINDOW_SIZE}_min${MIN_SNPs}.csv \
+-f phased -o Pairwise_Stats_windowsize${WINDOW_SIZE}_stepsize_${STEP_SIZE}_min${MIN_SNPs}.csv \
 -w $WINDOW_SIZE \
 -s $STEP_SIZE \
 -m $MIN_SNPs \
--p NI.Zlat N101,N102,N103,N104,N108,N110,N111,N114,N121,N122,N123,N126,N128,N129,N130 \
--p NI.Zten NOR124,NOR125,NOR132,NOR134,NOR140,NOR141,NOR142	\
--p NNZ.Zlat PN10,PN1,PN12,PN13,PN15,PN16,PN17,PN1,PN2,PN3,PN6,PN7
+-p $P1 -p $P2 -p $P3 \
+--popsFile ../VCF/Pops.txt
 ```
