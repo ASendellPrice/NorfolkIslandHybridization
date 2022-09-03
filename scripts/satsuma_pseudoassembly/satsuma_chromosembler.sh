@@ -1,5 +1,4 @@
-#Create a tmux session
-tmux new -s chromosemble
+#!/bin/bash
 
 #If directory "data/assembly" does not exist then create it
 if [[ ! -d data/assembly ]]
