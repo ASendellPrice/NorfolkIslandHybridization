@@ -16,7 +16,7 @@ mamba activate NorfolkIslandHybridisation
 
 #Make required directories
 mkdir filtered_reads
-mkdir fastp_logs
+mkdir fastp_reports
 
 #Initiate log file
 date > filtered_reads/read_filtering.log
@@ -53,12 +53,12 @@ do
         --dedup
         
         #Rename / move fastp reports to fastp_log directory
-        mv fastp.html ../fastp_logs/${ReadPair}.html
-        mv fastp.json ../fastp_logs/${ReadPair}.json
+        mv fastp.html ../fastp_reports/${ReadPair}.html
+        mv fastp.json ../fastp_reports/${ReadPair}.json
 
         #Send fastp reports to s3 bucket for storage
-        ~/aws-cli/bin/aws s3 cp ../fastp_logs/${ReadPair}.html s3://norfolkhybrids/fastp_reports/
-        ~/aws-cli/bin/aws s3 cp ../fastp_logs/${ReadPair}.json s3://norfolkhybrids/fastp_reports/
+        ~/aws-cli/bin/aws s3 cp ../fastp_reports/${ReadPair}.html s3://norfolkhybrids/fastp_reports/
+        ~/aws-cli/bin/aws s3 cp ../fastp_reports/${ReadPair}.json s3://norfolkhybrids/fastp_reports/
 
         #Send filtered reads to s3 bucket
         ~/aws-cli/bin/aws s3 cp ../filtered_reads/${SAMPLE}/Filtered_${ReadPair}_1.fq.gz s3://norfolkhybrids/filtered_reads/${SAMPLE}/
