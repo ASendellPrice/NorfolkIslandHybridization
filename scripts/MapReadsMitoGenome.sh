@@ -7,7 +7,8 @@ mkdir mapping/Zlat_mitogenome
 # Author:   Ash Sendell-Price
 # Date:     18/01/2023
 # System:   vettel (warwick)
-# Summary:  ADD
+# Summary:  Maps filtered novogene reads to Zosterops lateralis mitogenome assembly, merges bams,
+#           calculates sequencing depth at each position.
 #################################################################################################
 
 #Load conda environment
@@ -16,6 +17,7 @@ mamba activate NorfolkIslandHybridisation
 #Create directories to store sample bam files
 mkdir mapping
 mkdir mapping/Zlat_mitogenome
+mkdir mitogenome_fastas
 
 #Index assembly using bwa-mem2
 bwa-mem2 index assemblies/NC_029146.1_ZLat_mitogenome.fasta.gz
@@ -57,7 +59,13 @@ do
     samtools index ../mapping/Zlat_mitogenome/${SAMPLE}.sorted.bam
 
     #Calculate depth at each site (incl. missing)
-    samtools depth -aa ${SAMPLE}.sorted.bam > ../mapping/Zlat_mitogenome/${SAMPLE}.depth
+    samtools depth -aa ../mapping/Zlat_mitogenome/${SAMPLE}.sorted.bam > ../mapping/Zlat_mitogenome/${SAMPLE}.depth
+
+    #Output consensus mitogenome sequence for sample
+    ../bin/angsd/angsd -i ../mapping/Zlat_mitogenome/${SAMPLE}.sorted.bam \
+    -minQ 20 -minMapQ 20 -uniqueOnly -setMinDepth 10 \
+    -doCounts 1 -dumpCounts 1 -doFasta 4 \
+    -out mitogenome_fastas/${SAMPLE}
 
     #Transfer full bam and index to s3 bucket
     ~/aws-cli/bin/aws s3 cp ../mapping/Zlat_mitogenome/${SAMPLE}.sorted.bam s3://norfolkhybrids/mapping/Zlat_mitogenome/
