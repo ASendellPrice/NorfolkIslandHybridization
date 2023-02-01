@@ -65,7 +65,7 @@ do
     ../bin/angsd/angsd -i ../mapping/Zlat_mitogenome/${SAMPLE}.sorted.bam \
     -minQ 20 -minMapQ 20 -uniqueOnly -setMinDepth 10 \
     -doCounts 1 -dumpCounts 1 -doFasta 4 \
-    -out mitogenome_fastas/${SAMPLE}
+    -out ../mitogenome_fastas/${SAMPLE}
 
     #Transfer full bam and index to s3 bucket
     ~/aws-cli/bin/aws s3 cp ../mapping/Zlat_mitogenome/${SAMPLE}.sorted.bam s3://norfolkhybrids/mapping/Zlat_mitogenome/
